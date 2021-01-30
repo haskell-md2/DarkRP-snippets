@@ -1,0 +1,28 @@
+{
+    "name": "darkrp-snippets",
+    "displayName": "DarkRP snippets",
+    "description": "Adds snipes from DarkRP to VS Code",
+    "publisher": "haskellmd2",
+    "version": "0.0.1",
+    "icon": "icon.png",
+    "engines": {
+        "vscode": "^1.52.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "'lua'",
+                "path": "./snippets/snippets.code-snippets"
+            }
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/haskell-md2/darkrp-snippets"
+    }
+
+    
+}

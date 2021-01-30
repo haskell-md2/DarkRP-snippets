@@ -1,0 +1,700 @@
+// {   
+//         // Place your GLOBAL snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+//         // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+//         // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+//         // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+//         // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+//         // Placeholders with the same ids are connected.
+//         // Example:
+    
+//         "DarkRP/Hooks/Shared/addLaw":{"scope": "lua","prefix": "addLaw","body": ["'addLaw'"],"description": "Called when a law is added."},
+
+//             "DarkRP/Hooks/Server/agendaUpdated":{"scope": "lua","prefix": "agendaUpdated","body": ["'agendaUpdated'"],"description": "When the agenda is updated."},
+            
+//             "DarkRP/Hooks/Server/calculateNPCKillPay":{"scope": "lua","prefix": "calculateNPCKillPay","body": ["'calculateNPCKillPay'"],"description": "How much a player should profit from killing a NPC"},
+            
+//             "DarkRP/Hooks/Server/canAdvert":{"scope": "lua","prefix": "canAdvert","body": ["'canAdvert'"],"description": "Whether someone can place an advertisement billboard."},
+            
+//             "DarkRP/Hooks/Server/canArrest":{"scope": "lua","prefix": "canArrest","body": ["'canArrest'"],"description": "Whether someone can arrest another player."},
+            
+//             "DarkRP/Hooks/Shared/canBuyAmmo":{"scope": "lua","prefix": "canBuyAmmo","body": ["'canBuyAmmo'"],"description": "Whether a player can buy ammo."},
+            
+//             "DarkRP/Hooks/Shared/canBuyCustomEntity":{"scope": "lua","prefix": "canBuyCustomEntity","body": ["'canBuyCustomEntity'"],"description": "Whether a player can a certain custom entity."},
+            
+//             "DarkRP/Hooks/Shared/canBuyPistol":{"scope": "lua","prefix": "canBuyPistol","body": ["'canBuyPistol'"],"description": "Whether a player can buy a pistol."},
+            
+//             "DarkRP/Hooks/Shared/canBuyShipment":{"scope": "lua","prefix": "canBuyShipment","body": ["'canBuyShipment'"],"description": "Whether a player can buy a shipment."},
+            
+//             "DarkRP/Hooks/Shared/canBuyVehicle":{"scope": "lua","prefix": "canBuyVehicle","body": ["'canBuyVehicle'"],"description": "Whether a player can buy a vehicle."},
+            
+//             "DarkRP/Hooks/Server/canChangeJob":{"scope": "lua","prefix": "canChangeJob","body": ["'canChangeJob'"],"description": "Whether a player can change their job. NOTE: This is only for the /job comand! The hook for changing to a pre-existing job is playerCanChangeTeam."},
+            
+//             "DarkRP/Hooks/Server/CanChangeRPName":{"scope": "lua","prefix": "CanChangeRPName","body": ["'CanChangeRPName'"],"description": "Whether a player can change their RP name."},
+            
+//             "DarkRP/Hooks/Server/canChatCommand":{"scope": "lua","prefix": "canChatCommand","body": ["'canChatCommand'"],"description": "Called when a player tries to run any chat command or uses the DarkRP console command."},
+            
+//             "DarkRP/Hooks/Server/canChatSound":{"scope": "lua","prefix": "canChatSound","body": ["'canChatSound'"],"description": "Whether a chat sound can be played."},
+            
+//             "DarkRP/Hooks/Server/canDarkRPUse":{"scope": "lua","prefix": "canDarkRPUse","body": ["'canDarkRPUse'"],"description": "When a player uses an entity."},
+            
+//             "DarkRP/Hooks/Server/canDemote":{"scope": "lua","prefix": "canDemote","body": ["'canDemote'"],"description": "Whether a player can demote another player."},
+            
+//             "DarkRP/Hooks/Shared/canDoorRam":{"scope": "lua","prefix": "canDoorRam","body": ["'canDoorRam'"],"description": "Called when a player attempts to ram something. Use this to override ram behaviour or to disallow ramming."},
+            
+//             "DarkRP/Hooks/Server/canDropPocketItem":{"scope": "lua","prefix": "canDropPocketItem","body": ["'canDropPocketItem'"],"description": "Whether someone is allowed to drop something from their pocket."},
+            
+//             "DarkRP/Hooks/Server/canDropWeapon":{"scope": "lua","prefix": "canDropWeapon","body": ["'canDropWeapon'"],"description": "Whether a player can drop a certain weapon."},
+            
+//             "DarkRP/Hooks/Server/canEarnNPCKillPay":{"scope": "lua","prefix": "canEarnNPCKillPay","body": ["'canEarnNPCKillPay'"],"description": "If a player should profit from killing a NPC"},
+            
+//             "DarkRP/Hooks/Server/canEditLaws":{"scope": "lua","prefix": "canEditLaws","body": ["'canEditLaws'"],"description": "Whether someone can edit laws."},
+            
+//             "DarkRP/Hooks/Server/canGoAFK":{"scope": "lua","prefix": "canGoAFK","body": ["'canGoAFK'"],"description": "When a player can MANUALLY start being AFK by entering the chat command. Note: this hook does NOT get called when a player is set to AFK automatically! That hook will not be added, because I don't want asshole server owners to make AFK rules not apply to admins."},
+            
+//             "DarkRP/Hooks/Shared/canKeysLock":{"scope": "lua","prefix": "canKeysLock","body": ["'canKeysLock'"],"description": "Whether the player can lock a given door. This hook is run when ply:canKeysLock is called."},
+            
+//             "DarkRP/Hooks/Shared/canKeysUnlock":{"scope": "lua","prefix": "canKeysUnlock","body": ["'canKeysUnlock'"],"description": "Whether the player can unlock a given door. This hook is run when ply:canKeysUnlock is called."},
+            
+//             "DarkRP/Hooks/Shared/canLockpick":{"scope": "lua","prefix": "canLockpick","body": ["'canLockpick'"],"description": "Whether an entity can be lockpicked."},
+            
+//             "DarkRP/Hooks/Server/canPocket":{"scope": "lua","prefix": "canPocket","body": ["'canPocket'"],"description": "Whether a player can pocket a certain item."},
+            
+//             "DarkRP/Hooks/Server/canPropertyTax":{"scope": "lua","prefix": "canPropertyTax","body": ["'canPropertyTax'"],"description": "Called right before a player's property is taxed. This hook differs from onPropertyTax in that onPropertyTax is called AFTER the taxing. With this hook, one can influence the taxing process."},
+            
+//             "DarkRP/Hooks/Shared/canRequestHit":{"scope": "lua","prefix": "canRequestHit","body": ["'canRequestHit'"],"description": "Whether someone can request a hit."},
+            
+//             "DarkRP/Hooks/Shared/canRequestWarrant":{"scope": "lua","prefix": "canRequestWarrant","body": ["'canRequestWarrant'"],"description": "Whether someone can request a search warrant."},
+            
+//             "DarkRP/Hooks/Server/canSeeLogMessage":{"scope": "lua","prefix": "canSeeLogMessage","body": ["'canSeeLogMessage'"],"description": "Whether a player can see a DarkRP log message in the console."},
+            
+//             "DarkRP/Hooks/Server/canSleep":{"scope": "lua","prefix": "canSleep","body": ["'canSleep'"],"description": "Whether someone is allowed to sleep."},
+            
+//             "DarkRP/Hooks/Server/canStartVote":{"scope": "lua","prefix": "canStartVote","body": ["'canStartVote'"],"description": "Whether the vote can be started or not."},
+            
+//             "DarkRP/Hooks/Server/canTax":{"scope": "lua","prefix": "canTax","body": ["'canTax'"],"description": "Called before a player pays taxes. This hook differs from onPaidTax in that this hook can prevent the taxing and change the tax amount."},
+            
+//             "DarkRP/Hooks/Server/canTaxEntity":{"scope": "lua","prefix": "canTaxEntity","body": ["'canTaxEntity'"],"description": "Called right before a player's property is taxed. Decides per entity whether it can be taxed."},
+            
+//             "DarkRP/Hooks/Server/canUnarrest":{"scope": "lua","prefix": "canUnarrest","body": ["'canUnarrest'"],"description": "Whether someone can unarrest another player."},
+            
+//             "DarkRP/Hooks/Shared/canUnwant":{"scope": "lua","prefix": "canUnwant","body": ["'canUnwant'"],"description": "Whether someone can remove the wanted status from a player"},
+            
+//             "DarkRP/Hooks/Server/canVote":{"scope": "lua","prefix": "canVote","body": ["'canVote'"],"description": "Whether a player can cast a vote."},
+            
+//             "DarkRP/Hooks/Shared/canWanted":{"scope": "lua","prefix": "canWanted","body": ["'canWanted'"],"description": "Whether someone can make a player wanted"},
+            
+//             "DarkRP/Hooks/Client/chatHideRecipient":{"scope": "lua","prefix": "chatHideRecipient","body": ["'chatHideRecipient'"],"description": "Hide a receipent from who can hear/see your text GUI."},
+            
+//             "DarkRP/Hooks/Server/DarkRPDBInitialized":{"scope": "lua","prefix": "DarkRPDBInitialized","body": ["'DarkRPDBInitialized'"],"description": "Called when DarkRP is done initializing the database."},
+            
+//             "DarkRP/Hooks/Shared/DarkRPFinishedLoading":{"scope": "lua","prefix": "DarkRPFinishedLoading","body": ["'DarkRPFinishedLoading'"],"description": "Runs right after DarkRP itself has loaded. All DarkRPMod stuff (except for disabled_defaults) is loaded during this hook. NOTE! NO CUSTOM STUFF WILL BE AVAILABLE DURING THIS HOOK. USE `loadCustomDarkRPItems` INSTEAD IF YOU WANT THAT!"},
+            
+//             "DarkRP/Hooks/Client/DarkRPLogPrinted":{"scope": "lua","prefix": "DarkRPLogPrinted","body": ["'DarkRPLogPrinted'"],"description": "Called when a log has printed in console."},
+            
+//             "DarkRP/Hooks/Shared/DarkRPStartedLoading":{"scope": "lua","prefix": "DarkRPStartedLoading","body": ["'DarkRPStartedLoading'"],"description": "Runs at the very start of loading DarkRP. Not even sandbox has loaded here yet."},
+            
+//             "DarkRP/Hooks/Shared/DarkRPVarChanged":{"scope": "lua","prefix": "DarkRPVarChanged","body": ["'DarkRPVarChanged'"],"description": "Called when a DarkRPVar was changed."},
+            
+//             "DarkRP/Hooks/Server/demoteTeam":{"scope": "lua","prefix": "demoteTeam","body": ["'demoteTeam'"],"description": "The team the player is to be demoted to instead of the default team."},
+            
+//             "DarkRP/Hooks/Client/F4MenuTabs":{"scope": "lua","prefix": "F4MenuTabs","body": ["'F4MenuTabs'"],"description": "Called when tabs are generated. Add and remove tabs in this hook."},
+            
+//             "DarkRP/Hooks/Server/getDoorCost":{"scope": "lua","prefix": "getDoorCost","body": ["'getDoorCost'"],"description": "Get the cost of a door."},
+            
+//             "DarkRP/Hooks/Server/getVehicleCost":{"scope": "lua","prefix": "getVehicleCost","body": ["'getVehicleCost'"],"description": "Get the cost of a vehicle."},
+            
+//             "DarkRP/Hooks/Server/getVoteResults":{"scope": "lua","prefix": "getVoteResults","body": ["'getVoteResults'"],"description": "Override the results of a vote."},
+            
+//             "DarkRP/Hooks/Server/hideSellDoorMessage":{"scope": "lua","prefix": "hideSellDoorMessage","body": ["'hideSellDoorMessage'"],"description": "Whether to hide the door/vehicle sold notification"},
+            
+//             "DarkRP/Hooks/Client/HUDDrawDoorData":{"scope": "lua","prefix": "HUDDrawDoorData","body": ["'HUDDrawDoorData'"],"description": "Called when DarkRP is about to draw the door ownability information of a door or vehicle. Override this hook to"},
+            
+//             "DarkRP/Hooks/Server/hungerUpdate":{"scope": "lua","prefix": "hungerUpdate","body": ["'hungerUpdate'"],"description": "Called every 10 seconds for every player when hungermod is on. This updates the player's hunger level."},
+            
+//             "DarkRP/Hooks/Shared/loadCustomDarkRPItems":{"scope": "lua","prefix": "loadCustomDarkRPItems","body": ["'loadCustomDarkRPItems'"],"description": "Runs right after the scripts from the DarkRPMod are run. You can add custom jobs, entities, shipments and whatever in this hook."},
+            
+//             "DarkRP/Hooks/Shared/lockdownEnded":{"scope": "lua","prefix": "lockdownEnded","body": ["'lockdownEnded'"],"description": "When a lockdown has ended."},
+            
+//             "DarkRP/Hooks/Shared/lockdownStarted":{"scope": "lua","prefix": "lockdownStarted","body": ["'lockdownStarted'"],"description": "When a lockdown has started."},
+            
+//             "DarkRP/Hooks/Shared/lockpickStarted":{"scope": "lua","prefix": "lockpickStarted","body": ["'lockpickStarted'"],"description": "Called when a player is about to pick a lock."},
+            
+//             "DarkRP/Hooks/Shared/lockpickTime":{"scope": "lua","prefix": "lockpickTime","body": ["'lockpickTime'"],"description": "The length of time, in seconds, it takes to lockpick an entity."},
+            
+//             "DarkRP/Hooks/Server/lotteryEnded":{"scope": "lua","prefix": "lotteryEnded","body": ["'lotteryEnded'"],"description": "When a lottery has ended."},
+            
+//             "DarkRP/Hooks/Server/lotteryStarted":{"scope": "lua","prefix": "lotteryStarted","body": ["'lotteryStarted'"],"description": "When a lottery has started."},
+            
+//             "DarkRP/Hooks/Server/moneyPrinterCatchFire":{"scope": "lua","prefix": "moneyPrinterCatchFire","body": ["'moneyPrinterCatchFire'"],"description": "Called when a money printer is about to catch fire."},
+            
+//             "DarkRP/Hooks/Server/moneyPrinterPrinted":{"scope": "lua","prefix": "moneyPrinterPrinted","body": ["'moneyPrinterPrinted'"],"description": "Called after a money printer is has printed money."},
+            
+//             "DarkRP/Hooks/Server/moneyPrinterPrintMoney":{"scope": "lua","prefix": "moneyPrinterPrintMoney","body": ["'moneyPrinterPrintMoney'"],"description": "Called when a money printer is about to print money."},
+            
+//             "DarkRP/Hooks/Shared/onAgendaRemoved":{"scope": "lua","prefix": "onAgendaRemoved","body": ["'onAgendaRemoved'"],"description": "Called when an agenda was removed."},
+            
+//             "DarkRP/Hooks/Server/onAllowedToOwnAdded":{"scope": "lua","prefix": "onAllowedToOwnAdded","body": ["'onAllowedToOwnAdded'"],"description": "When a player adds a co-owner to a door."},
+            
+//             "DarkRP/Hooks/Server/onAllowedToOwnRemoved":{"scope": "lua","prefix": "onAllowedToOwnRemoved","body": ["'onAllowedToOwnRemoved'"],"description": "When a player removes a co-owner to a door."},
+            
+//             "DarkRP/Hooks/Shared/onAmmoTypeRemoved":{"scope": "lua","prefix": "onAmmoTypeRemoved","body": ["'onAmmoTypeRemoved'"],"description": "Called when a ammotype was removed."},
+            
+//             "DarkRP/Hooks/Server/onChatCommand":{"scope": "lua","prefix": "onChatCommand","body": ["'onChatCommand'"],"description": "Called after a player has run any chat command or uses the DarkRP console command. Note: the chat command has already been run. Use canChatCommand if you want to stop chat commands from being run."},
+            
+//             "DarkRP/Hooks/Server/onChatSound":{"scope": "lua","prefix": "onChatSound","body": ["'onChatSound'"],"description": "When a chat sound is played."},
+            
+//             "DarkRP/Hooks/Server/onDarkRPWeaponDropped":{"scope": "lua","prefix": "onDarkRPWeaponDropped","body": ["'onDarkRPWeaponDropped'"],"description": "When a player drops a weapon. Use this hook (in combination with PlayerPickupDarkRPWeapon) to store extra information about a weapon. This hook cannot prevent weapon dropping. If you want to prevent weapon dropping, use canDropWeapon instead."},
+            
+//             "DarkRP/Hooks/Shared/onDemoteGroupRemoved":{"scope": "lua","prefix": "onDemoteGroupRemoved","body": ["'onDemoteGroupRemoved'"],"description": "Called when a job was demotegroup."},
+            
+//             "DarkRP/Hooks/Server/onDoorRamUsed":{"scope": "lua","prefix": "onDoorRamUsed","body": ["'onDoorRamUsed'"],"description": "Called when the door ram has been used."},
+            
+//             "DarkRP/Hooks/Client/onDrawSpawnedWeapon":{"scope": "lua","prefix": "onDrawSpawnedWeapon","body": ["'onDrawSpawnedWeapon'"],"description": "Draw spawned weapons."},
+            
+//             "DarkRP/Hooks/Shared/onEntityGroupRemoved":{"scope": "lua","prefix": "onEntityGroupRemoved","body": ["'onEntityGroupRemoved'"],"description": "Called when an entity group was removed."},
+            
+//             "DarkRP/Hooks/Shared/onEntityRemoved":{"scope": "lua","prefix": "onEntityRemoved","body": ["'onEntityRemoved'"],"description": "Called when a buyable entity was removed."},
+            
+//             "DarkRP/Hooks/Shared/onFoodItemRemoved":{"scope": "lua","prefix": "onFoodItemRemoved","body": ["'onFoodItemRemoved'"],"description": "Called when a food item is removed."},
+            
+//             "DarkRP/Hooks/Shared/onGroupChatRemoved":{"scope": "lua","prefix": "onGroupChatRemoved","body": ["'onGroupChatRemoved'"],"description": "Called when a groupchat was removed."},
+            
+//             "DarkRP/Hooks/Shared/onHitAccepted":{"scope": "lua","prefix": "onHitAccepted","body": ["'onHitAccepted'"],"description": "When a hitman accepts a hit."},
+            
+//             "DarkRP/Hooks/Shared/onHitCompleted":{"scope": "lua","prefix": "onHitCompleted","body": ["'onHitCompleted'"],"description": "When a hitman finishes a hit."},
+            
+//             "DarkRP/Hooks/Shared/onHitFailed":{"scope": "lua","prefix": "onHitFailed","body": ["'onHitFailed'"],"description": "When a hit fails for some reason."},
+            
+//             "DarkRP/Hooks/Shared/onJobRemoved":{"scope": "lua","prefix": "onJobRemoved","body": ["'onJobRemoved'"],"description": "Called when a job was removed."},
+            
+//             "DarkRP/Hooks/Server/onKeysLocked":{"scope": "lua","prefix": "onKeysLocked","body": ["'onKeysLocked'"],"description": "Called when a door or vehicle was locked."},
+            
+//             "DarkRP/Hooks/Client/onKeysMenuOpened":{"scope": "lua","prefix": "onKeysMenuOpened","body": ["'onKeysMenuOpened'"],"description": "Called when the keys menu is opened."},
+            
+//             "DarkRP/Hooks/Server/onKeysUnlocked":{"scope": "lua","prefix": "onKeysUnlocked","body": ["'onKeysUnlocked'"],"description": "Called when a door or vehicle was unlocked."},
+            
+//             "DarkRP/Hooks/Shared/onLockpickCompleted":{"scope": "lua","prefix": "onLockpickCompleted","body": ["'onLockpickCompleted'"],"description": "Result of a player attempting to lockpick an entity."},
+            
+//             "DarkRP/Hooks/Server/onNotify":{"scope": "lua","prefix": "onNotify","body": ["'onNotify'"],"description": "Called when a notification is sent."},
+            
+//             "DarkRP/Hooks/Server/onPaidTax":{"scope": "lua","prefix": "onPaidTax","body": ["'onPaidTax'"],"description": "Called when a player has paid tax."},
+            
+//             "DarkRP/Hooks/Server/onPlayerChangedName":{"scope": "lua","prefix": "onPlayerChangedName","body": ["'onPlayerChangedName'"],"description": "Called when a player's DarkRP name has been changed."},
+            
+//             "DarkRP/Hooks/Shared/OnPlayerChangedTeam":{"scope": "lua","prefix": "OnPlayerChangedTeam","body": ["'OnPlayerChangedTeam'"],"description": "When your team (job) is changed."},
+            
+//             "DarkRP/Hooks/Server/onPlayerDemoted":{"scope": "lua","prefix": "onPlayerDemoted","body": ["'onPlayerDemoted'"],"description": "Called when a player is demoted."},
+            
+//             "DarkRP/Hooks/Server/onPlayerFirstJoined":{"scope": "lua","prefix": "onPlayerFirstJoined","body": ["'onPlayerFirstJoined'"],"description": "Called when a player joins this server for the first time (i.e. no entry for this player exists in the DarkRP database)"},
+            
+//             "DarkRP/Hooks/Server/onPocketItemAdded":{"scope": "lua","prefix": "onPocketItemAdded","body": ["'onPocketItemAdded'"],"description": "Called when an entity is added to the pocket."},
+            
+//             "DarkRP/Hooks/Server/onPocketItemDropped":{"scope": "lua","prefix": "onPocketItemDropped","body": ["'onPocketItemDropped'"],"description": "Called when the player drops an item from their pocket. This hook internally calls the hook onPocketItemRemoved."},
+            
+//             "DarkRP/Hooks/Server/onPocketItemRemoved":{"scope": "lua","prefix": "onPocketItemRemoved","body": ["'onPocketItemRemoved'"],"description": "Called when an item is removed from the pocket."},
+            
+//             "DarkRP/Hooks/Server/onPropertyTax":{"scope": "lua","prefix": "onPropertyTax","body": ["'onPropertyTax'"],"description": "Called right AFTER a player's property is taxed. Please use canPropertyTax if you want to influence the taxing process."},
+            
+//             "DarkRP/Hooks/Shared/onShipmentRemoved":{"scope": "lua","prefix": "onShipmentRemoved","body": ["'onShipmentRemoved'"],"description": "Called when a shipment was removed."},
+            
+//             "DarkRP/Hooks/Shared/onVehicleRemoved":{"scope": "lua","prefix": "onVehicleRemoved","body": ["'onVehicleRemoved'"],"description": "Called when a vehicle was removed."},
+            
+//             "DarkRP/Hooks/Server/onVoteStarted":{"scope": "lua","prefix": "onVoteStarted","body": ["'onVoteStarted'"],"description": "Called when a vote has been started."},
+            
+//             "DarkRP/Hooks/Server/playerAdverted":{"scope": "lua","prefix": "playerAdverted","body": ["'playerAdverted'"],"description": "Called when a player placed an advertisement billboard."},
+            
+//             "DarkRP/Hooks/Server/playerAFKDemoted":{"scope": "lua","prefix": "playerAFKDemoted","body": ["'playerAFKDemoted'"],"description": "When a player is demoted for being AFK."},
+            
+//             "DarkRP/Hooks/Server/playerArrested":{"scope": "lua","prefix": "playerArrested","body": ["'playerArrested'"],"description": "When a player is arrested."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtAmmo":{"scope": "lua","prefix": "playerBoughtAmmo","body": ["'playerBoughtAmmo'"],"description": "Called when a player buys some ammo."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtCustomEntity":{"scope": "lua","prefix": "playerBoughtCustomEntity","body": ["'playerBoughtCustomEntity'"],"description": "Called when a player bought an entity (like a money printer or a gun lab)."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtCustomVehicle":{"scope": "lua","prefix": "playerBoughtCustomVehicle","body": ["'playerBoughtCustomVehicle'"],"description": "Called when a player bought a vehicle."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtDoor":{"scope": "lua","prefix": "playerBoughtDoor","body": ["'playerBoughtDoor'"],"description": "Called when a player has purchased a door."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtFood":{"scope": "lua","prefix": "playerBoughtFood","body": ["'playerBoughtFood'"],"description": "Called when a player bought food."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtPistol":{"scope": "lua","prefix": "playerBoughtPistol","body": ["'playerBoughtPistol'"],"description": "Called when a player bought a pistol."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtShipment":{"scope": "lua","prefix": "playerBoughtShipment","body": ["'playerBoughtShipment'"],"description": "Called when a player bought a shipment."},
+            
+//             "DarkRP/Hooks/Server/playerBoughtVehicle":{"scope": "lua","prefix": "playerBoughtVehicle","body": ["'playerBoughtVehicle'"],"description": "Called when a player has purchased a vehicle."},
+            
+//             "DarkRP/Hooks/Server/playerBuyDoor":{"scope": "lua","prefix": "playerBuyDoor","body": ["'playerBuyDoor'"],"description": "When a player purchases a door."},
+            
+//             "DarkRP/Hooks/Server/playerBuyVehicle":{"scope": "lua","prefix": "playerBuyVehicle","body": ["'playerBuyVehicle'"],"description": "When a player purchases a vehicle."},
+            
+//             "DarkRP/Hooks/Server/playerCanChangeTeam":{"scope": "lua","prefix": "playerCanChangeTeam","body": ["'playerCanChangeTeam'"],"description": "Whether a player can change their team."},
+            
+//             "DarkRP/Hooks/Server/PlayerCanPickupWeapon":{"scope": "lua","prefix": "PlayerCanPickupWeapon","body": ["'PlayerCanPickupWeapon'"],"description": "Whether a player can pickup a weapon"},
+            
+//             "DarkRP/Hooks/Server/playerClassVarsApplied":{"scope": "lua","prefix": "playerClassVarsApplied","body": ["'playerClassVarsApplied'"],"description": "When a player has had GMod player class variables applied to them through ply:applyPlayerClassVars()."},
+            
+//             "DarkRP/Hooks/Server/playerDroppedCheque":{"scope": "lua","prefix": "playerDroppedCheque","body": ["'playerDroppedCheque'"],"description": "Called when a player drops a cheque."},
+            
+//             "DarkRP/Hooks/Server/playerDroppedMoney":{"scope": "lua","prefix": "playerDroppedMoney","body": ["'playerDroppedMoney'"],"description": "Called when a player drops some money."},
+            
+//             "DarkRP/Hooks/Server/playerEnteredLottery":{"scope": "lua","prefix": "playerEnteredLottery","body": ["'playerEnteredLottery'"],"description": "When a player has entered the lottery."},
+            
+//             "DarkRP/Hooks/Server/playerGaveMoney":{"scope": "lua","prefix": "playerGaveMoney","body": ["'playerGaveMoney'"],"description": "Called when a player gives another player money."},
+            
+//             "DarkRP/Hooks/Server/playerGetSalary":{"scope": "lua","prefix": "playerGetSalary","body": ["'playerGetSalary'"],"description": "When a player receives salary."},
+            
+//             "DarkRP/Hooks/Server/playerGotLicense":{"scope": "lua","prefix": "playerGotLicense","body": ["'playerGotLicense'"],"description": "Called when a player got a gun license."},
+            
+//             "DarkRP/Hooks/Server/playerKeysSold":{"scope": "lua","prefix": "playerKeysSold","body": ["'playerKeysSold'"],"description": "When a player sold a door or vehicle."},
+            
+//             "DarkRP/Hooks/Server/playerPickedUpCheque":{"scope": "lua","prefix": "playerPickedUpCheque","body": ["'playerPickedUpCheque'"],"description": "Called when a player picks up a cheque."},
+            
+//             "DarkRP/Hooks/Server/playerPickedUpMoney":{"scope": "lua","prefix": "playerPickedUpMoney","body": ["'playerPickedUpMoney'"],"description": "Called when a player picked up money."},
+            
+//             "DarkRP/Hooks/Server/PlayerPickupDarkRPWeapon":{"scope": "lua","prefix": "PlayerPickupDarkRPWeapon","body": ["'PlayerPickupDarkRPWeapon'"],"description": "When a player picks up a spawned_weapon."},
+            
+//             "DarkRP/Hooks/Server/playerSellDoor":{"scope": "lua","prefix": "playerSellDoor","body": ["'playerSellDoor'"],"description": "When a player is about to sell a door."},
+            
+//             "DarkRP/Hooks/Server/playerSellVehicle":{"scope": "lua","prefix": "playerSellVehicle","body": ["'playerSellVehicle'"],"description": "When a player is about to sell a vehicle."},
+            
+//             "DarkRP/Hooks/Server/playerSetAFK":{"scope": "lua","prefix": "playerSetAFK","body": ["'playerSetAFK'"],"description": "When a player is set to AFK or returns from AFK."},
+            
+//             "DarkRP/Hooks/Server/playerStarved":{"scope": "lua","prefix": "playerStarved","body": ["'playerStarved'"],"description": "Called when a player dies of starvation."},
+            
+//             "DarkRP/Hooks/Server/playerToreUpCheque":{"scope": "lua","prefix": "playerToreUpCheque","body": ["'playerToreUpCheque'"],"description": "Called when a player tears up a cheque."},
+            
+//             "DarkRP/Hooks/Server/playerUnArrested":{"scope": "lua","prefix": "playerUnArrested","body": ["'playerUnArrested'"],"description": "When a player is unarrested."},
+            
+//             "DarkRP/Hooks/Server/playerUnWanted":{"scope": "lua","prefix": "playerUnWanted","body": ["'playerUnWanted'"],"description": "When a player is unwanted."},
+            
+//             "DarkRP/Hooks/Server/playerUnWarranted":{"scope": "lua","prefix": "playerUnWarranted","body": ["'playerUnWarranted'"],"description": "When a player is unwarranted."},
+            
+//             "DarkRP/Hooks/Server/playerWalletChanged":{"scope": "lua","prefix": "playerWalletChanged","body": ["'playerWalletChanged'"],"description": "When a player receives money."},
+            
+//             "DarkRP/Hooks/Server/playerWanted":{"scope": "lua","prefix": "playerWanted","body": ["'playerWanted'"],"description": "When a player is wanted."},
+            
+//             "DarkRP/Hooks/Server/playerWarranted":{"scope": "lua","prefix": "playerWarranted","body": ["'playerWarranted'"],"description": "When a player is warranted."},
+            
+//             "DarkRP/Hooks/Shared/playerWeaponsChecked":{"scope": "lua","prefix": "playerWeaponsChecked","body": ["'playerWeaponsChecked'"],"description": "Called when a player with a weapon checker has checked another player's weapons. Note: Only called when the player looks at the weapons without confiscating. Please see playerWeaponsConfiscated for when weapons are actually confiscated."},
+            
+//             "DarkRP/Hooks/Server/playerWeaponsConfiscated":{"scope": "lua","prefix": "playerWeaponsConfiscated","body": ["'playerWeaponsConfiscated'"],"description": "Called when a player with a weapon checker has confiscated another player's weapons."},
+            
+//             "DarkRP/Hooks/Server/playerWeaponsReturned":{"scope": "lua","prefix": "playerWeaponsReturned","body": ["'playerWeaponsReturned'"],"description": "Called when a player with a weapon checker has returned another player's weapons."},
+            
+//             "DarkRP/Hooks/Shared/postLoadCustomDarkRPItems":{"scope": "lua","prefix": "postLoadCustomDarkRPItems","body": ["'postLoadCustomDarkRPItems'"],"description": "Runs right after loadCustomDarkRPItems. All custom DarkRP content will be loaded by this time."},
+            
+//             "DarkRP/Hooks/Server/PostPlayerSay":{"scope": "lua","prefix": "PostPlayerSay","body": ["'PostPlayerSay'"],"description": "Called after a player has said something."},
+            
+//             "DarkRP/Hooks/Shared/removeLaw":{"scope": "lua","prefix": "removeLaw","body": ["'removeLaw'"],"description": "Called when a law is removed."},
+            
+//             "DarkRP/Hooks/Shared/resetLaws":{"scope": "lua","prefix": "resetLaws","body": ["'resetLaws'"],"description": "Called when laws are reset."},
+            
+//             "DarkRP/Hooks/Client/teamChanged":{"scope": "lua","prefix": "teamChanged","body": ["'teamChanged'"],"description": "When your team is changed."},
+            
+//             "DarkRP/Hooks/Shared/UpdatePlayerSpeed":{"scope": "lua","prefix": "UpdatePlayerSpeed","body": ["'UpdatePlayerSpeed'"],"description": "Change a player's walking and running speed."},
+            
+            
+            
+    
+//                 "DarkRP/Functions/Player/Server/abortHit":{"scope": "lua","prefix": "abortHit","body": ["abortHit"],"description": "Abort a hit"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/addChatCommandsLanguage":{"scope": "lua","prefix": "addChatCommandsLanguage","body": ["addChatCommandsLanguage"],"description": "Add a translation table for chat command descriptions. See darkrpmod/lua/darkrp_language/chatcommands.lua for an example."},
+    
+//     "DarkRP/Functions/DarkRP/Client/addChatReceiver":{"scope": "lua","prefix": "addChatReceiver","body": ["addChatReceiver"],"description": "Add a chat command with specific receivers"},
+    
+//     "DarkRP/Functions/Player/Server/addCustomEntity":{"scope": "lua","prefix": "addCustomEntity","body": ["addCustomEntity"],"description": "Add a custom entity to the player's limit."},
+    
+//     "DarkRP/Functions/DarkRP/Client/addF4MenuTab":{"scope": "lua","prefix": "addF4MenuTab","body": ["addF4MenuTab"],"description": "Add a tab to the F4 menu."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/addHitmanTeam":{"scope": "lua","prefix": "addHitmanTeam","body": ["addHitmanTeam"],"description": "Make this team a hitman."},
+    
+//     "DarkRP/Functions/DarkRP/Server/addJailPos":{"scope": "lua","prefix": "addJailPos","body": ["addJailPos"],"description": "Add a jail position to the map. This jail position will be saved in the database."},
+    
+//     "DarkRP/Functions/Entity/Server/addKeysAllowedToOwn":{"scope": "lua","prefix": "addKeysAllowedToOwn","body": ["addKeysAllowedToOwn"],"description": "Make this player allowed to co-own the door or vehicle."},
+    
+//     "DarkRP/Functions/Entity/Server/addKeysDoorOwner":{"scope": "lua","prefix": "addKeysDoorOwner","body": ["addKeysDoorOwner"],"description": "Make this player a co-owner of the door."},
+    
+//     "DarkRP/Functions/Entity/Server/addKeysDoorTeam":{"scope": "lua","prefix": "addKeysDoorTeam","body": ["addKeysDoorTeam"],"description": "Allow a team to lock/unlock a door.."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/addLanguage":{"scope": "lua","prefix": "addLanguage","body": ["addLanguage"],"description": "Create a language/translation."},
+    
+//     "DarkRP/Functions/Player/Server/addMoney":{"scope": "lua","prefix": "addMoney","body": ["addMoney"],"description": "Give money to a player."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/addPhrase":{"scope": "lua","prefix": "addPhrase","body": ["addPhrase"],"description": "Add a phrase to the existing translation."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/addPlayerGesture":{"scope": "lua","prefix": "addPlayerGesture","body": ["addPlayerGesture"],"description": "Add a player gesture to the DarkRP animations menu (the one that opens with the keys weapon.). Note: This function must be called BOTH serverside AND clientside!"},
+    
+//     "DarkRP/Functions/Player/Server/addPocketItem":{"scope": "lua","prefix": "addPocketItem","body": ["addPocketItem"],"description": "Add an item to the pocket of the player."},
+    
+//     "DarkRP/Functions/DarkRP/Server/addTeamSpawnPos":{"scope": "lua","prefix": "addTeamSpawnPos","body": ["addTeamSpawnPos"],"description": "Add a spawn position to the database. The position will not replace other spawn positions."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/addToCategory":{"scope": "lua","prefix": "addToCategory","body": ["addToCategory"],"description": "Create a category for the F4 menu."},
+    
+//     "DarkRP/Functions/Player/Server/applyPlayerClassVars":{"scope": "lua","prefix": "applyPlayerClassVars","body": ["applyPlayerClassVars"],"description": "Applies all variables in a player's associated GMod player class to the player."},
+    
+//     "DarkRP/Functions/Player/Server/arrest":{"scope": "lua","prefix": "arrest","body": ["arrest"],"description": "Arrest a player."},
+    
+//     "DarkRP/Functions/Player/Shared/canAfford":{"scope": "lua","prefix": "canAfford","body": ["canAfford"],"description": "Whether the player can afford the given amount of money"},
+    
+//     "DarkRP/Functions/Player/Shared/canKeysLock":{"scope": "lua","prefix": "canKeysLock","body": ["canKeysLock"],"description": "Whether the player can lock a given door."},
+    
+//     "DarkRP/Functions/Player/Shared/canKeysUnlock":{"scope": "lua","prefix": "canKeysUnlock","body": ["canKeysUnlock"],"description": "Whether the player can unlock a given door."},
+    
+//     "DarkRP/Functions/Player/Server/changeAllowed":{"scope": "lua","prefix": "changeAllowed","body": ["changeAllowed"],"description": "Returns whether a player is allowed to get a certain job."},
+    
+//     "DarkRP/Functions/Player/Server/changeTeam":{"scope": "lua","prefix": "changeTeam","body": ["changeTeam"],"description": "Change the team of a player."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/chatCommandAlias":{"scope": "lua","prefix": "chatCommandAlias","body": ["chatCommandAlias"],"description": "Create an alias for a chat command"},
+    
+//     "DarkRP/Functions/DarkRP/Client/closeF1Menu":{"scope": "lua","prefix": "closeF1Menu","body": ["closeF1Menu"],"description": "Close the F1 help menu."},
+    
+//     "DarkRP/Functions/DarkRP/Client/closeF4Menu":{"scope": "lua","prefix": "closeF4Menu","body": ["closeF4Menu"],"description": "Close the F4 menu if it's open."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createAgenda":{"scope": "lua","prefix": "createAgenda","body": ["createAgenda"],"description": "Create an agenda for groups of jobs to communicate."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createAmmoType":{"scope": "lua","prefix": "createAmmoType","body": ["createAmmoType"],"description": "Create an ammo type."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createCategory":{"scope": "lua","prefix": "createCategory","body": ["createCategory"],"description": "Create a category for the F4 menu."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createDemoteGroup":{"scope": "lua","prefix": "createDemoteGroup","body": ["createDemoteGroup"],"description": "Create a demote group. When you get banned (demoted) from one of the jobs in this group, you will be banned from every job in this group."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createEntity":{"scope": "lua","prefix": "createEntity","body": ["createEntity"],"description": "Create a entity for DarkRP."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createEntityGroup":{"scope": "lua","prefix": "createEntityGroup","body": ["createEntityGroup"],"description": "Create a entity group for DarkRP."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createFood":{"scope": "lua","prefix": "createFood","body": ["createFood"],"description": "Create food for DarkRP."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createGroupChat":{"scope": "lua","prefix": "createGroupChat","body": ["createGroupChat"],"description": "Create a group chat."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createJob":{"scope": "lua","prefix": "createJob","body": ["createJob"],"description": "Create a job for DarkRP."},
+    
+//     "DarkRP/Functions/DarkRP/Server/createMoneyBag":{"scope": "lua","prefix": "createMoneyBag","body": ["createMoneyBag"],"description": "Create a money bag."},
+    
+//     "DarkRP/Functions/DarkRP/Server/createPlayerData":{"scope": "lua","prefix": "createPlayerData","body": ["createPlayerData"],"description": "Internal function: creates an entry in the database for a player who has joined for the first time."},
+    
+//     "DarkRP/Functions/DarkRP/Server/createQuestion":{"scope": "lua","prefix": "createQuestion","body": ["createQuestion"],"description": "Ask someone a question."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createShipment":{"scope": "lua","prefix": "createShipment","body": ["createShipment"],"description": "Create a shipment for DarkRP."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/createVehicle":{"scope": "lua","prefix": "createVehicle","body": ["createVehicle"],"description": "Create a vehicle for DarkRP."},
+    
+//     "DarkRP/Functions/DarkRP/Server/createVote":{"scope": "lua","prefix": "createVote","body": ["createVote"],"description": "Create a vote."},
+    
+//     "DarkRP/Functions/Player/Server/customEntityLimitReached":{"scope": "lua","prefix": "customEntityLimitReached","body": ["customEntityLimitReached"],"description": "Set a shared variable."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/declareChatCommand":{"scope": "lua","prefix": "declareChatCommand","body": ["declareChatCommand"],"description": "Declare a chat command (describe it)"},
+    
+//     "DarkRP/Functions/DarkRP/Server/defineChatCommand":{"scope": "lua","prefix": "defineChatCommand","body": ["defineChatCommand"],"description": "Create a chat command that calls the function"},
+    
+//     "DarkRP/Functions/DarkRP/Server/definePrivilegedChatCommand":{"scope": "lua","prefix": "definePrivilegedChatCommand","body": ["definePrivilegedChatCommand"],"description": "Create a chat command that calls the function if the player has the right CAMI privilege. Will automatically notify the user when they don't have access. Note that chat command functions registered with this function can NOT override the chat that will appear after the command has been executed."},
+    
+//     "DarkRP/Functions/DarkRP/Client/deLocalise":{"scope": "lua","prefix": "deLocalise","body": ["deLocalise"],"description": "Makes sure the string will not be localised when drawn or printed."},
+    
+//     "DarkRP/Functions/DarkRP/Server/destroyLastVote":{"scope": "lua","prefix": "destroyLastVote","body": ["destroyLastVote"],"description": "Destroy the last created vote."},
+    
+//     "DarkRP/Functions/DarkRP/Server/destroyQuestion":{"scope": "lua","prefix": "destroyQuestion","body": ["destroyQuestion"],"description": "Destroy a question by ID."},
+    
+//     "DarkRP/Functions/DarkRP/Server/destroyQuestionsWithEnt":{"scope": "lua","prefix": "destroyQuestionsWithEnt","body": ["destroyQuestionsWithEnt"],"description": "Destroy all questions that have something to do with this ent."},
+    
+//     "DarkRP/Functions/DarkRP/Server/destroyVotesWithEnt":{"scope": "lua","prefix": "destroyVotesWithEnt","body": ["destroyVotesWithEnt"],"description": "Destroy all votes that have something to do with this ent."},
+    
+//     "DarkRP/Functions/Entity/Server/doorIndex":{"scope": "lua","prefix": "doorIndex","body": ["doorIndex"],"description": "Get the door index of a door. Use this to store door information in the database."},
+    
+//     "DarkRP/Functions/DarkRP/Server/doorIndexToEnt":{"scope": "lua","prefix": "doorIndexToEnt","body": ["doorIndexToEnt"],"description": "Get the entity of a door index (inverse of ent:doorIndexToEnt()). Note: the door MUST have been created by the map!"},
+    
+//     "DarkRP/Functions/DarkRP/Server/doorToEntIndex":{"scope": "lua","prefix": "doorToEntIndex","body": ["doorToEntIndex"],"description": "Get an ENT index from a door index."},
+    
+//     "DarkRP/Functions/Player/Server/doPropertyTax":{"scope": "lua","prefix": "doPropertyTax","body": ["doPropertyTax"],"description": "Tax a player based on the amount of doors and vehicles they have."},
+    
+//     "DarkRP/Functions/Player/Client/drawHitInfo":{"scope": "lua","prefix": "drawHitInfo","body": ["drawHitInfo"],"description": "Start drawing the hit information above a hitman."},
+    
+//     "DarkRP/Functions/Entity/Client/drawOwnableInfo":{"scope": "lua","prefix": "drawOwnableInfo","body": ["drawOwnableInfo"],"description": "Draw the ownability information on a door or vehicle."},
+    
+//     "DarkRP/Functions/Player/Client/drawPlayerInfo":{"scope": "lua","prefix": "drawPlayerInfo","body": ["drawPlayerInfo"],"description": "Draw player info above a player's head (name, health job). Override this function to disable or change drawing behaviour in DarkRP."},
+    
+//     "DarkRP/Functions/Player/Client/drawWantedInfo":{"scope": "lua","prefix": "drawWantedInfo","body": ["drawWantedInfo"],"description": "Draw the wanted info above a player's head. Override this to disable or change the drawing of wanted info above players' heads."},
+    
+//     "DarkRP/Functions/Player/Server/dropDRPWeapon":{"scope": "lua","prefix": "dropDRPWeapon","body": ["dropDRPWeapon"],"description": "Drop the weapon with animations."},
+    
+//     "DarkRP/Functions/Player/Server/dropPocketItem":{"scope": "lua","prefix": "dropPocketItem","body": ["dropPocketItem"],"description": "Make the player drop an item from the pocket."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/error":{"scope": "lua","prefix": "error","body": ["error"],"description": "Throw a simplerr formatted error. Also halts the stack, which means that statements after calling this function will not execute."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/errorNoHalt":{"scope": "lua","prefix": "errorNoHalt","body": ["errorNoHalt"],"description": "Throw a simplerr formatted error. Unlike DarkRP.error, this does not halt the stack. This means that statements after calling this function will be executed like normal."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/explodeArg":{"scope": "lua","prefix": "explodeArg","body": ["explodeArg"],"description": "String arguments exploded into a table. It accounts for substrings in quotes, which makes it more intelligent than string.Explode"},
+    
+//     "DarkRP/Functions/DarkRP/Server/findEmptyPos":{"scope": "lua","prefix": "findEmptyPos","body": ["findEmptyPos"],"description": "Find an empty position as close as possible to the given position (Note: this algorithm is slow!)."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/findPlayer":{"scope": "lua","prefix": "findPlayer","body": ["findPlayer"],"description": "Find a single player based on vague information."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/findPlayers":{"scope": "lua","prefix": "findPlayers","body": ["findPlayers"],"description": "Find a list of players based on vague information."},
+    
+//     "DarkRP/Functions/Player/Server/finishHit":{"scope": "lua","prefix": "finishHit","body": ["finishHit"],"description": "End a hit without a message"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/formatMoney":{"scope": "lua","prefix": "formatMoney","body": ["formatMoney"],"description": "Format a number as a money value. Includes currency symbol."},
+    
+//     "DarkRP/Functions/Player/Shared/getAgenda":{"scope": "lua","prefix": "getAgenda","body": ["getAgenda"],"description": "Get the agenda a player manages."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getAgendas":{"scope": "lua","prefix": "getAgendas","body": ["getAgendas"],"description": "Get all agendas. Note: teams that share an agenda use the exact same agenda table. E.g. when you change the agenda of the CP, the agenda of the Chief will automatically be updated as well. Make sure this property is maintained when modifying the agenda table. Not maintaining that property will lead to players not seeing the right agenda text."},
+    
+//     "DarkRP/Functions/Player/Shared/getAgendaTable":{"scope": "lua","prefix": "getAgendaTable","body": ["getAgendaTable"],"description": "Get the agenda a player can see. Note: when a player is not the manager of an agenda, it returns the agenda of the manager."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getAvailableVehicles":{"scope": "lua","prefix": "getAvailableVehicles","body": ["getAvailableVehicles"],"description": "Get the available vehicles that DarkRP supports."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getCategories":{"scope": "lua","prefix": "getCategories","body": ["getCategories"],"description": "Get all categories for all F4 menu tabs."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getChatCommand":{"scope": "lua","prefix": "getChatCommand","body": ["getChatCommand"],"description": "Get the information on a chat command."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getChatCommandDescription":{"scope": "lua","prefix": "getChatCommandDescription","body": ["getChatCommandDescription"],"description": "Get the translated description of a chat command."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getChatCommands":{"scope": "lua","prefix": "getChatCommands","body": ["getChatCommands"],"description": "Get every chat command."},
+    
+//     "DarkRP/Functions/DarkRP/Server/getChatSound":{"scope": "lua","prefix": "getChatSound","body": ["getChatSound"],"description": "Get a chat sound (play a noise when someone says something) associated with the given phrase."},
+    
+//     "DarkRP/Functions/Player/Shared/getDarkRPVar":{"scope": "lua","prefix": "getDarkRPVar","body": ["getDarkRPVar"],"description": "Get the value of a DarkRPVar, which is shared between server and client."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getDemoteGroup":{"scope": "lua","prefix": "getDemoteGroup","body": ["getDemoteGroup"],"description": "Get the demote group of a team. Every team in the same group will return the same object."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getDemoteGroups":{"scope": "lua","prefix": "getDemoteGroups","body": ["getDemoteGroups"],"description": "Get all demote groups Every team in the same group will return the same object."},
+    
+//     "DarkRP/Functions/Entity/Shared/getDoorData":{"scope": "lua","prefix": "getDoorData","body": ["getDoorData"],"description": "Internal function to get the door/vehicle data."},
+    
+//     "DarkRP/Functions/Entity/Shared/getDoorOwner":{"scope": "lua","prefix": "getDoorOwner","body": ["getDoorOwner"],"description": "Get the owner of a door."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getDoorVars":{"scope": "lua","prefix": "getDoorVars","body": ["getDoorVars"],"description": "Internal function, retrieves all the registered door variables."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getDoorVarsByName":{"scope": "lua","prefix": "getDoorVarsByName","body": ["getDoorVarsByName"],"description": "Internal function, retrieves all the registered door variables, indeded by their names."},
+    
+//     "DarkRP/Functions/Player/Shared/getEyeSightHitEntity":{"scope": "lua","prefix": "getEyeSightHitEntity","body": ["getEyeSightHitEntity"],"description": "Get the entity that is closest to a player's line of sight and its distance."},
+    
+//     "DarkRP/Functions/DarkRP/Client/getF4MenuPanel":{"scope": "lua","prefix": "getF4MenuPanel","body": ["getF4MenuPanel"],"description": "Get the F4 menu panel."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getFoodItems":{"scope": "lua","prefix": "getFoodItems","body": ["getFoodItems"],"description": "Get all food items."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getGroupChats":{"scope": "lua","prefix": "getGroupChats","body": ["getGroupChats"],"description": "Get all group chats."},
+    
+//     "DarkRP/Functions/Player/Server/getHitCustomer":{"scope": "lua","prefix": "getHitCustomer","body": ["getHitCustomer"],"description": "Get the customer for the current hit"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getHitmanTeams":{"scope": "lua","prefix": "getHitmanTeams","body": ["getHitmanTeams"],"description": "Get all the hitman teams."},
+    
+//     "DarkRP/Functions/Player/Shared/getHitPrice":{"scope": "lua","prefix": "getHitPrice","body": ["getHitPrice"],"description": "Get the price the hitman demands for his work."},
+    
+//     "DarkRP/Functions/DarkRP/Server/getHits":{"scope": "lua","prefix": "getHits","body": ["getHits"],"description": "Get all the active hits"},
+    
+//     "DarkRP/Functions/Player/Shared/getHitTarget":{"scope": "lua","prefix": "getHitTarget","body": ["getHitTarget"],"description": "Get the target of a hitman."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getIncompleteChatCommands":{"scope": "lua","prefix": "getIncompleteChatCommands","body": ["getIncompleteChatCommands"],"description": "chat commands that have been defined, but not declared. Information about these chat commands is missing."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getJobByCommand":{"scope": "lua","prefix": "getJobByCommand","body": ["getJobByCommand"],"description": "Get the job table and number from the command of the job."},
+    
+//     "DarkRP/Functions/Player/Shared/getJobTable":{"scope": "lua","prefix": "getJobTable","body": ["getJobTable"],"description": "Get the job table of a player."},
+    
+//     "DarkRP/Functions/Entity/Shared/getKeysAllowedToOwn":{"scope": "lua","prefix": "getKeysAllowedToOwn","body": ["getKeysAllowedToOwn"],"description": "The list of people of which the master door owner has added as allowed to own."},
+    
+//     "DarkRP/Functions/Entity/Shared/getKeysCoOwners":{"scope": "lua","prefix": "getKeysCoOwners","body": ["getKeysCoOwners"],"description": "The list of people who co-own the door."},
+    
+//     "DarkRP/Functions/Entity/Shared/getKeysDoorGroup":{"scope": "lua","prefix": "getKeysDoorGroup","body": ["getKeysDoorGroup"],"description": "The door group of a door if it exists."},
+    
+//     "DarkRP/Functions/Entity/Shared/getKeysDoorTeams":{"scope": "lua","prefix": "getKeysDoorTeams","body": ["getKeysDoorTeams"],"description": "The teams that are allowed to open this door."},
+    
+//     "DarkRP/Functions/Entity/Shared/getKeysNonOwnable":{"scope": "lua","prefix": "getKeysNonOwnable","body": ["getKeysNonOwnable"],"description": "Whether ownability of this door/vehicle is disabled."},
+    
+//     "DarkRP/Functions/Entity/Shared/getKeysTitle":{"scope": "lua","prefix": "getKeysTitle","body": ["getKeysTitle"],"description": "Get the title of this door or vehicle."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getLaws":{"scope": "lua","prefix": "getLaws","body": ["getLaws"],"description": "Get the table of all current laws."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getMissingPhrases":{"scope": "lua","prefix": "getMissingPhrases","body": ["getMissingPhrases"],"description": "Get all the phrases a language is missing."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getPhrase":{"scope": "lua","prefix": "getPhrase","body": ["getPhrase"],"description": "Get a phrase from the selected language."},
+    
+//     "DarkRP/Functions/Player/Shared/getPocketItems":{"scope": "lua","prefix": "getPocketItems","body": ["getPocketItems"],"description": "Get a player's pocket items."},
+    
+//     "DarkRP/Functions/DarkRP/Client/getPreferredJobModel":{"scope": "lua","prefix": "getPreferredJobModel","body": ["getPreferredJobModel"],"description": "Get the model preferred by the player (if the job allows multiple models)."},
+    
+//     "DarkRP/Functions/Player/Server/getPreferredModel":{"scope": "lua","prefix": "getPreferredModel","body": ["getPreferredModel"],"description": "Get the preferred model of a player for a job."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/getSortedChatCommands":{"scope": "lua","prefix": "getSortedChatCommands","body": ["getSortedChatCommands"],"description": "Get every chat command, sorted by their name."},
+    
+//     "DarkRP/Functions/Player/Shared/getWantedReason":{"scope": "lua","prefix": "getWantedReason","body": ["getWantedReason"],"description": "Get the reason why someone is wanted"},
+    
+//     "DarkRP/Functions/Player/Shared/hasDarkRPPrivilege":{"scope": "lua","prefix": "hasDarkRPPrivilege","body": ["hasDarkRPPrivilege"],"description": "Whether the player has a certain privilege."},
+    
+//     "DarkRP/Functions/Player/Shared/hasHit":{"scope": "lua","prefix": "hasHit","body": ["hasHit"],"description": "Whether this hitman has a hit."},
+    
+//     "DarkRP/Functions/Player/Server/hungerUpdate":{"scope": "lua","prefix": "hungerUpdate","body": ["hungerUpdate"],"description": "Makes the player slightly more hungry. Called in a timer by default."},
+    
+//     "DarkRP/Functions/DarkRP/Server/initDatabase":{"scope": "lua","prefix": "initDatabase","body": ["initDatabase"],"description": "Initialize the DarkRP database."},
+    
+//     "DarkRP/Functions/Player/Server/initiateTax":{"scope": "lua","prefix": "initiateTax","body": ["initiateTax"],"description": "Internal function, starts the timer that taxes the player every once in a while."},
+    
+//     "DarkRP/Functions/Player/Shared/isArrested":{"scope": "lua","prefix": "isArrested","body": ["isArrested"],"description": "Whether this player is arrested"},
+    
+//     "DarkRP/Functions/Player/Shared/isChief":{"scope": "lua","prefix": "isChief","body": ["isChief"],"description": "Whether this player is a Chief."},
+    
+//     "DarkRP/Functions/Player/Shared/isCook":{"scope": "lua","prefix": "isCook","body": ["isCook"],"description": "Whether this player is a cook. This function is only available if hungermod is enabled."},
+    
+//     "DarkRP/Functions/Player/Shared/isCP":{"scope": "lua","prefix": "isCP","body": ["isCP"],"description": "Whether this player is part of the police force (mayor, cp, chief)."},
+    
+//     "DarkRP/Functions/Entity/Shared/isDoor":{"scope": "lua","prefix": "isDoor","body": ["isDoor"],"description": "Whether this entity is considered a door in DarkRP."},
+    
+//     "DarkRP/Functions/DarkRP/Server/isEmpty":{"scope": "lua","prefix": "isEmpty","body": ["isEmpty"],"description": "Check whether the given position is empty. If you want the function not to ignore your entity, set the variable NotEmptyPos (ex. ENT.NotEmptyPos = true)"},
+    
+//     "DarkRP/Functions/Player/Shared/isHitman":{"scope": "lua","prefix": "isHitman","body": ["isHitman"],"description": "Whether this player is a hitman."},
+    
+//     "DarkRP/Functions/Player/Client/isInRoom":{"scope": "lua","prefix": "isInRoom","body": ["isInRoom"],"description": "Whether the player is in the same room as the LocalPlayer."},
+    
+//     "DarkRP/Functions/Vector/Shared/isInSight":{"scope": "lua","prefix": "Vector:isInSight","body": ["Vector:isInSight"],"description": "Decides whether the vector could be seen by the player if they were to look at it."},
+    
+//     "DarkRP/Functions/Entity/Shared/isKeysAllowedToOwn":{"scope": "lua","prefix": "isKeysAllowedToOwn","body": ["isKeysAllowedToOwn"],"description": "Whether this player is allowed to co-own a door, as decided by the master door owner."},
+    
+//     "DarkRP/Functions/Entity/Shared/isKeysOwnable":{"scope": "lua","prefix": "isKeysOwnable","body": ["isKeysOwnable"],"description": "Whether this door can be bought."},
+    
+//     "DarkRP/Functions/Entity/Shared/isKeysOwned":{"scope": "lua","prefix": "isKeysOwned","body": ["isKeysOwned"],"description": "Whether this door is owned by someone."},
+    
+//     "DarkRP/Functions/Entity/Shared/isKeysOwnedBy":{"scope": "lua","prefix": "isKeysOwnedBy","body": ["isKeysOwnedBy"],"description": "Whether this door is owned or co-owned by this player"},
+    
+//     "DarkRP/Functions/Entity/Server/isLocked":{"scope": "lua","prefix": "isLocked","body": ["isLocked"],"description": "Whether this door/vehicle is locked."},
+    
+//     "DarkRP/Functions/Entity/Shared/isMasterOwner":{"scope": "lua","prefix": "isMasterOwner","body": ["isMasterOwner"],"description": "Whether the player is the main owner of the door (as opposed to a co-owner)."},
+    
+//     "DarkRP/Functions/Player/Shared/isMayor":{"scope": "lua","prefix": "isMayor","body": ["isMayor"],"description": "Whether this player is a mayor."},
+    
+//     "DarkRP/Functions/Player/Shared/isMedic":{"scope": "lua","prefix": "isMedic","body": ["isMedic"],"description": "Whether this player is a medic."},
+    
+//     "DarkRP/Functions/Entity/Shared/isMoneyBag":{"scope": "lua","prefix": "isMoneyBag","body": ["isMoneyBag"],"description": "Whether this entity is a money bag"},
+    
+//     "DarkRP/Functions/Player/Shared/isWanted":{"scope": "lua","prefix": "isWanted","body": ["isWanted"],"description": "Whether this player is wanted"},
+    
+//     "DarkRP/Functions/DarkRP/Server/jailPosCount":{"scope": "lua","prefix": "jailPosCount","body": ["jailPosCount"],"description": "The amount of jail positions in the current map."},
+    
+//     "DarkRP/Functions/Entity/Server/keysLock":{"scope": "lua","prefix": "keysLock","body": ["keysLock"],"description": "Lock this door or vehicle."},
+    
+//     "DarkRP/Functions/Entity/Server/keysOwn":{"scope": "lua","prefix": "keysOwn","body": ["keysOwn"],"description": "Make the player the master owner of the door"},
+    
+//     "DarkRP/Functions/Entity/Server/keysUnLock":{"scope": "lua","prefix": "keysUnLock","body": ["keysUnLock"],"description": "Unlock this door or vehicle."},
+    
+//     "DarkRP/Functions/Entity/Server/keysUnOwn":{"scope": "lua","prefix": "keysUnOwn","body": ["keysUnOwn"],"description": "Make this player unown the door/vehicle."},
+    
+//     "DarkRP/Functions/Player/Server/keysUnOwnAll":{"scope": "lua","prefix": "keysUnOwnAll","body": ["keysUnOwnAll"],"description": "Unown every door and vehicle owned by this player."},
+    
+//     "DarkRP/Functions/DarkRP/Server/lockdown":{"scope": "lua","prefix": "lockdown","body": ["lockdown"],"description": "Start a lockdown."},
+    
+//     "DarkRP/Functions/DarkRP/Server/log":{"scope": "lua","prefix": "log","body": ["log"],"description": "Log a message in DarkRP"},
+    
+//     "DarkRP/Functions/Player/Server/newHungerData":{"scope": "lua","prefix": "newHungerData","body": ["newHungerData"],"description": "Create the initial hunger data (called on PlayerInitialSpawn)."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/nickSortedPlayers":{"scope": "lua","prefix": "nickSortedPlayers","body": ["nickSortedPlayers"],"description": "A table of players sorted by RP name."},
+    
+//     "DarkRP/Functions/DarkRP/Server/notify":{"scope": "lua","prefix": "notify","body": ["notify"],"description": "Make a notification pop up on the player's screen."},
+    
+//     "DarkRP/Functions/DarkRP/Server/notifyAll":{"scope": "lua","prefix": "notifyAll","body": ["notifyAll"],"description": "Make a notification pop up on the everyone's screen."},
+    
+//     "DarkRP/Functions/DarkRP/Server/offlinePlayerData":{"scope": "lua","prefix": "offlinePlayerData","body": ["offlinePlayerData"],"description": "Get a player's information from the database using a SteamID for use when the player is offline."},
+    
+//     "DarkRP/Functions/DarkRP/Client/openF1Menu":{"scope": "lua","prefix": "openF1Menu","body": ["openF1Menu"],"description": "Open the F1 help menu."},
+    
+//     "DarkRP/Functions/DarkRP/Client/openF4Menu":{"scope": "lua","prefix": "openF4Menu","body": ["openF4Menu"],"description": "Open the F4 menu."},
+    
+//     "DarkRP/Functions/DarkRP/Client/openHitMenu":{"scope": "lua","prefix": "openHitMenu","body": ["openHitMenu"],"description": "Open the menu that requests a hit."},
+    
+//     "DarkRP/Functions/DarkRP/Client/openKeysMenu":{"scope": "lua","prefix": "openKeysMenu","body": ["openKeysMenu"],"description": "Open the keys/F2 menu."},
+    
+//     "DarkRP/Functions/DarkRP/Client/openPocketMenu":{"scope": "lua","prefix": "openPocketMenu","body": ["openPocketMenu"],"description": "Open the DarkRP pocket menu."},
+    
+//     "DarkRP/Functions/Player/Server/payDay":{"scope": "lua","prefix": "payDay","body": ["payDay"],"description": "Give a player their salary."},
+    
+//     "DarkRP/Functions/DarkRP/Server/payPlayer":{"scope": "lua","prefix": "payPlayer","body": ["payPlayer"],"description": "Make one player give money to the other player."},
+    
+//     "DarkRP/Functions/Player/Server/placeHit":{"scope": "lua","prefix": "placeHit","body": ["placeHit"],"description": "Place an actual hit."},
+    
+//     "DarkRP/Functions/DarkRP/Server/printConsoleMessage":{"scope": "lua","prefix": "printConsoleMessage","body": ["printConsoleMessage"],"description": "Prints a message to a given player's console. This function also handles server consoles too (EntIndex = 0)."},
+    
+//     "DarkRP/Functions/DarkRP/Server/printMessageAll":{"scope": "lua","prefix": "printMessageAll","body": ["printMessageAll"],"description": "Make a notification pop up in the middle of everyone's screen."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/readNetDarkRPVar":{"scope": "lua","prefix": "readNetDarkRPVar","body": ["readNetDarkRPVar"],"description": "Internal function. You probably shouldn't need this. DarkRP calls this function when reading DarkRPVar net messages. This function reads the net data for a specific DarkRPVar."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/readNetDarkRPVarRemoval":{"scope": "lua","prefix": "readNetDarkRPVarRemoval","body": ["readNetDarkRPVarRemoval"],"description": "Internal function. You probably shouldn't need this. DarkRP calls this function when reading DarkRPVar net messages. This function the removal of a DarkRPVar."},
+    
+//     "DarkRP/Functions/DarkRP/Client/readNetDoorVar":{"scope": "lua","prefix": "readNetDoorVar","body": ["readNetDoorVar"],"description": "Internal function. You probably shouldn't need this. DarkRP calls this function when reading DoorVar net messages. This function reads the net data for a specific DoorVar."},
+    
+//     "DarkRP/Functions/DarkRP/Client/refreshF1Menu":{"scope": "lua","prefix": "refreshF1Menu","body": ["refreshF1Menu"],"description": "Close the F1 help menu."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/registerDarkRPVar":{"scope": "lua","prefix": "registerDarkRPVar","body": ["registerDarkRPVar"],"description": "Register a DarkRPVar by name. You should definitely register DarkRPVars. Registering DarkRPVars will make networking much more efficient."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/registerDoorVar":{"scope": "lua","prefix": "registerDoorVar","body": ["registerDoorVar"],"description": "Register a door variable by name. You should definitely register door variables. Registering DarkRPVars will make networking much more efficient."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeAgenda":{"scope": "lua","prefix": "removeAgenda","body": ["removeAgenda"],"description": "Remove a agenda from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/Entity/Server/removeAllKeysAllowedToOwn":{"scope": "lua","prefix": "removeAllKeysAllowedToOwn","body": ["removeAllKeysAllowedToOwn"],"description": "Disallow all people from owning the door."},
+    
+//     "DarkRP/Functions/Entity/Server/removeAllKeysDoorTeams":{"scope": "lua","prefix": "removeAllKeysDoorTeams","body": ["removeAllKeysDoorTeams"],"description": "Disallow all teams from locking/unlocking a door."},
+    
+//     "DarkRP/Functions/Entity/Server/removeAllKeysExtraOwners":{"scope": "lua","prefix": "removeAllKeysExtraOwners","body": ["removeAllKeysExtraOwners"],"description": "Remove all co-owners from a door."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeAmmoType":{"scope": "lua","prefix": "removeAmmoType","body": ["removeAmmoType"],"description": "Remove an ammotype from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeChatCommand":{"scope": "lua","prefix": "removeChatCommand","body": ["removeChatCommand"],"description": "Remove a chat command"},
+    
+//     "DarkRP/Functions/DarkRP/Client/removeChatReceiver":{"scope": "lua","prefix": "removeChatReceiver","body": ["removeChatReceiver"],"description": "Remove a chat command receiver"},
+    
+//     "DarkRP/Functions/Player/Server/removeCustomEntity":{"scope": "lua","prefix": "removeCustomEntity","body": ["removeCustomEntity"],"description": "Remove a custom entity to the player's limit."},
+    
+//     "DarkRP/Functions/Player/Server/removeDarkRPVar":{"scope": "lua","prefix": "removeDarkRPVar","body": ["removeDarkRPVar"],"description": "Remove a shared variable. Exactly the same as ply:setDarkRPVar(nil)."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeDemoteGroup":{"scope": "lua","prefix": "removeDemoteGroup","body": ["removeDemoteGroup"],"description": "Remove an demotegroup from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeEntity":{"scope": "lua","prefix": "removeEntity","body": ["removeEntity"],"description": "Remove an entity from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeEntityGroup":{"scope": "lua","prefix": "removeEntityGroup","body": ["removeEntityGroup"],"description": "Remove an entitygroup from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/DarkRP/Client/removeF4MenuTab":{"scope": "lua","prefix": "removeF4MenuTab","body": ["removeF4MenuTab"],"description": "Remove a tab from the F4 menu by name."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeFoodItem":{"scope": "lua","prefix": "removeFoodItem","body": ["removeFoodItem"],"description": "Remove a food item from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeFromCategory":{"scope": "lua","prefix": "removeFromCategory","body": ["removeFromCategory"],"description": "Create a category for the F4 menu."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeGroupChat":{"scope": "lua","prefix": "removeGroupChat","body": ["removeGroupChat"],"description": "Remove a groupchat from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeJob":{"scope": "lua","prefix": "removeJob","body": ["removeJob"],"description": "Remove a job from DarkRP."},
+    
+//     "DarkRP/Functions/Entity/Server/removeKeysAllowedToOwn":{"scope": "lua","prefix": "removeKeysAllowedToOwn","body": ["removeKeysAllowedToOwn"],"description": "Remove a player from being allowed to co-own a door."},
+    
+//     "DarkRP/Functions/Entity/Server/removeKeysDoorOwner":{"scope": "lua","prefix": "removeKeysDoorOwner","body": ["removeKeysDoorOwner"],"description": "Remove this player as co-owner"},
+    
+//     "DarkRP/Functions/Entity/Server/removeKeysDoorTeam":{"scope": "lua","prefix": "removeKeysDoorTeam","body": ["removeKeysDoorTeam"],"description": "Disallow a team from locking/unlocking a door."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removePlayerGesture":{"scope": "lua","prefix": "removePlayerGesture","body": ["removePlayerGesture"],"description": "Removes a player gesture from the DarkRP animations menu (the one that opens with the keys weapon.). Note: This function must be called BOTH serverside AND clientside!"},
+    
+//     "DarkRP/Functions/Player/Server/removePocketItem":{"scope": "lua","prefix": "removePocketItem","body": ["removePocketItem"],"description": "Remove an item from the pocket of the player."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeShipment":{"scope": "lua","prefix": "removeShipment","body": ["removeShipment"],"description": "Remove a shipment from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/DarkRP/Server/removeTeamSpawnPos":{"scope": "lua","prefix": "removeTeamSpawnPos","body": ["removeTeamSpawnPos"],"description": "Remove a single spawn position."},
+    
+//     "DarkRP/Functions/DarkRP/Shared/removeVehicle":{"scope": "lua","prefix": "removeVehicle","body": ["removeVehicle"],"description": "Remove a vehicle from DarkRP. NOTE: Must be called from BOTH server AND client to properly get it removed!"},
+    
+//     "DarkRP/Functions/Player/Server/requestHit":{"scope": "lua","prefix": "requestHit","body": ["requestHit"],"description": "Request a hit to a hitman."},
+    
+//     "DarkRP/Functions/Player/Server/requestWarrant":{"scope": "lua","prefix": "requestWarrant","body": ["requestWarrant"],"description": "File a request for a search warrant."},
+    
+//     "DarkRP/Functions/DarkRP/Server/resetLaws":{"scope": "lua","prefix": "resetLaws","body": ["resetLaws"],"description": "Reset to default laws."},
+    
+//     "DarkRP/Functions/DarkRP/Server/restorePlayerData":{"scope": "lua","prefix": "restorePlayerData","body": ["restorePlayerData"],"description": "Internal function that restores a player's DarkRP information when they join."},
+    
+//     "DarkRP/Functions/DarkRP/Server/retrieveJailPos":{"scope": "lua","prefix": "retrieveJailPos","body": ["retrieveJailPos"],"description": "Retrieve a jail position."},
+    
+//     "DarkRP/Functions/DarkRP/Server/retrievePlayerData":{"scope": "lua","prefix": "retrievePlayerData","body": ["retrievePlayerData"],"description": "Get a player's information from the database."},
+    
+//     "DarkRP/Functions/DarkRP/Server/retrieveRPNames":{"scope": "lua","prefix": "retrieveRPNames","body": ["retrieveRPNames"],"description": "Whether a given RP name is taken by someone else."},
+    
+//     "DarkRP/Functions/DarkRP/Server/retrieveSalary":{"scope": "lua","prefix": "retrieveSalary","body": ["retrieveSalary"],"description": "Get a player's salary from the database."},
+    
+//     "DarkRP/Functions/DarkRP/Server/retrieveTeamSpawnPos":{"scope": "lua","prefix": "retrieveTeamSpawnPos","body": ["retrieveTeamSpawnPos"],"description": "Retrieve a random spawn position for a job."},
+    
+//     "DarkRP/Functions/Player/Server/sendDarkRPVars":{"scope": "lua","prefix": "sendDarkRPVars","body": ["sendDarkRPVars"],"description": "Internal function. Sends all visibleDarkRPVars of all players to this player."},
+    
+//     "DarkRP/Functions/Player/Server/sendDoorData":{"scope": "lua","prefix": "sendDoorData","body": ["sendDoorData"],"description": "Internal function. Sends all door data to a player."},
+    
+    
+//     }
